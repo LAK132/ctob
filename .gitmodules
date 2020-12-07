@@ -1,0 +1,3 @@
+[submodule "inc/lak"]
+	path = inc/lak
+	url = https://github.com/LAK132/lak

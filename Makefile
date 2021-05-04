@@ -73,14 +73,21 @@ LAK_HEADERS = \
 	inc/lak/inc/lak/image.hpp \
 	inc/lak/inc/lak/image.inl \
 	inc/lak/inc/lak/intrin.hpp \
+	inc/lak/inc/lak/lifetime_view.hpp \
+	inc/lak/inc/lak/lifetime_view.inl \
 	inc/lak/inc/lak/macro_utils.hpp \
 	inc/lak/inc/lak/memmanip.hpp \
 	inc/lak/inc/lak/memory.hpp \
 	inc/lak/inc/lak/optional.hpp \
 	inc/lak/inc/lak/os.hpp \
+	inc/lak/inc/lak/packed_array.hpp \
+	inc/lak/inc/lak/packed_array.inl \
 	inc/lak/inc/lak/platform.hpp \
 	inc/lak/inc/lak/profile.hpp \
+	inc/lak/inc/lak/railcar.hpp \
+	inc/lak/inc/lak/railcar.inl \
 	inc/lak/inc/lak/result.hpp \
+	inc/lak/inc/lak/span_forward.hpp \
 	inc/lak/inc/lak/span.hpp \
 	inc/lak/inc/lak/span.inl \
 	inc/lak/inc/lak/stdint.hpp \
@@ -88,19 +95,26 @@ LAK_HEADERS = \
 	inc/lak/inc/lak/strcast.inl \
 	inc/lak/inc/lak/strconv.hpp \
 	inc/lak/inc/lak/strconv.inl \
+	inc/lak/inc/lak/streamify.hpp \
+	inc/lak/inc/lak/streamify.inl \
 	inc/lak/inc/lak/string.hpp \
+	inc/lak/inc/lak/surface.hpp \
 	inc/lak/inc/lak/tinflate.hpp \
 	inc/lak/inc/lak/tokeniser.hpp \
 	inc/lak/inc/lak/tokeniser.inl \
+	inc/lak/inc/lak/trace.hpp \
 	inc/lak/inc/lak/trie.hpp \
 	inc/lak/inc/lak/trie.inl \
 	inc/lak/inc/lak/tuple.hpp \
 	inc/lak/inc/lak/type_pack.hpp \
 	inc/lak/inc/lak/type_traits.hpp \
-	inc/lak/inc/lak/type_utils.hpp \
 	inc/lak/inc/lak/unicode.hpp \
 	inc/lak/inc/lak/unicode.inl \
+	inc/lak/inc/lak/uninitialised.hpp \
+	inc/lak/inc/lak/unique_pages.hpp \
+	inc/lak/inc/lak/unique_pages.inl \
 	inc/lak/inc/lak/utility.hpp \
+	inc/lak/inc/lak/uwuify.hpp \
 	inc/lak/inc/lak/variant.hpp \
 	inc/lak/inc/lak/variant.inl \
 	inc/lak/inc/lak/vec_intrin.hpp \

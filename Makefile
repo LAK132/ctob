@@ -98,6 +98,7 @@ LAK_HEADERS = \
 	inc/lak/inc/lak/streamify.hpp \
 	inc/lak/inc/lak/streamify.inl \
 	inc/lak/inc/lak/string.hpp \
+	inc/lak/inc/lak/stweamify.hpp \
 	inc/lak/inc/lak/surface.hpp \
 	inc/lak/inc/lak/tinflate.hpp \
 	inc/lak/inc/lak/tokeniser.hpp \

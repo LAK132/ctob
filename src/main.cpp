@@ -11,7 +11,7 @@
 const auto repl_usage =
   L"repl usage: ctob <utf8|utf16|utf32|utf16le|utf32le|utf16be|utf32be>";
 const auto conversion_usage =
-  "conversion usage: ctob"
+  "conversion usage: ctob "
   "[from-file] "
   "[from-encoding <utf8|wide|utf16|utf32|utf16le|utf32le|utf16be|utf32be>] "
   "[to-file] "

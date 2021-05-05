@@ -126,18 +126,8 @@ LAK_HEADERS = \
 LAK_OBJ = \
 	obj/lak/debug.obj \
 	obj/lak/file.obj \
-	obj/lak/intrin.obj \
-	obj/lak/memmanip.obj \
-	obj/lak/memory.obj \
-	obj/lak/profile.obj \
 	obj/lak/strconv.obj \
-	obj/lak/tinflate.obj \
-	obj/lak/tokeniser.obj \
-	obj/lak/unicode.obj \
-	obj/lak/opengl/gl3w.obj \
-	obj/lak/opengl/mesh.obj \
-	obj/lak/opengl/shader.obj \
-	obj/lak/opengl/texture.obj
+	obj/lak/unicode.obj
 
 ifneq ($(PLATFORM),NONE)
 LAK_OBJ += \
@@ -171,7 +161,7 @@ endif
 bin/ctob.elf: obj/main.obj $(LAK_OBJ) | bin
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-obj/main.obj: src/main.cpp | obj
+obj/main.obj: src/main.cpp $(LAK_HEADERS) | obj inc/lak/inc
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 # Common
@@ -189,9 +179,6 @@ obj/lak/intrin.obj: inc/lak/src/intrin.cpp $(LAK_HEADERS) | obj/lak inc/lak/src
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 obj/lak/memmanip.obj: inc/lak/src/memmanip.cpp $(LAK_HEADERS) | obj/lak inc/lak/src
-	$(CXX) -o $@ -c $< $(CXXFLAGS)
-
-obj/lak/memory.obj: inc/lak/src/memory.cpp $(LAK_HEADERS) | obj/lak inc/lak/src
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 obj/lak/platform.obj: inc/lak/src/platform.cpp $(LAK_HEADERS) | obj/lak inc/lak/src
@@ -281,4 +268,4 @@ bin obj obj/lak obj/lak/opengl obj/lak/SDL obj/lak/WIN32 obj/lak/XCB obj/lak/XLI
 	mkdir -p $@
 
 clean:
-	rm -rf obj
+	rm -rf obj bin

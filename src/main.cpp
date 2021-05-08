@@ -1,6 +1,8 @@
 #include <lak/debug.hpp>
 #include <lak/endian.hpp>
-#include <lak/file.hpp>
+#ifndef LAK_NO_FILESYSTEM
+#  include <lak/file.hpp>
+#endif
 #include <lak/memory.hpp>
 #include <lak/span.hpp>
 #include <lak/unicode.hpp>
@@ -10,13 +12,16 @@
 
 const auto repl_usage =
   L"repl usage: ctob <utf8|utf16|utf32|utf16le|utf32le|utf16be|utf32be>";
+#ifndef LAK_NO_FILESYSTEM
 const auto conversion_usage =
   "conversion usage: ctob "
   "[from-file] "
   "[from-encoding <utf8|wide|utf16|utf32|utf16le|utf32le|utf16be|utf32be>] "
   "[to-file] "
   "[to-encoding <utf8|wide|utf16|utf32|utf16le|utf32le|utf16be|utf32be>]";
+#endif
 
+#ifndef LAK_NO_FILESYSTEM
 template<typename FROM_CHAR,
          lak::endian FROM_ENDIAN,
          typename TO_CHAR,
@@ -44,7 +49,8 @@ int converter(const lak::fs::path &from, const lak::fs::path &to)
     TO_CHAR buffer[buffer_size + 1] = {};
     lak::from_codepoint(lak::codepoint_buffer(lak::span(buffer)), c);
     for (const uint8_t v : lak::span<const uint8_t>(
-           lak::span(buffer).first(lak::codepoint_length<TO_CHAR>(c))))
+           lak::span<TO_CHAR, buffer_size + 1>(buffer).first(
+             lak::codepoint_length<TO_CHAR>(c))))
     {
       output.push_back(v);
     }
@@ -119,6 +125,7 @@ int converter(const lak::fs::path &from,
   ASSERT_NYI();
   return EXIT_FAILURE;
 }
+#endif
 
 template<typename CHAR, lak::endian ENDIAN>
 int repl()
@@ -210,6 +217,7 @@ int main(int argc, const char **argv)
   {
     return repl(lak::astring(argv[1]));
   }
+#ifndef LAK_NO_FILESYSTEM
   else if (argc == 5)
   {
     return converter(lak::fs::path(argv[1]),
@@ -217,9 +225,14 @@ int main(int argc, const char **argv)
                      lak::fs::path(argv[3]),
                      lak::astring(argv[4]));
   }
+#endif
   else
   {
-    std::wcerr << repl_usage << "\n" << conversion_usage << "\n";
+    std::wcerr << repl_usage << "\n"
+#ifndef LAK_NO_FILESYSTEM
+               << conversion_usage << "\n"
+#endif
+      ;
     return EXIT_FAILURE;
   }
 }
